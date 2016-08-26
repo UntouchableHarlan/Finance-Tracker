@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
   get '/signup' => 'users#new'
+  get '/my_portfolio' => 'users#my_portfolio'
 
   resources :sessions
   resources :users
