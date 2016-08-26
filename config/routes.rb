@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
   get '/signup' => 'users#new'
   get '/my_portfolio' => 'users#my_portfolio'
+  get '/get_stocks' => 'stocks#search'
 
   resources :sessions
   resources :users
