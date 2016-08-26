@@ -1,8 +1,20 @@
- <div class="stock_lookup">
-   <h2>Search for Stock</h2>
-   <%= bootstrap_form_tag get_stocks_path, remote: true, method: :get, id: 'stockies' do |f| %>
-        <%= f.search_field :stock, params[:stock], placeholder: "Stock Symbol" %>
-        <%= f.submit %>
-   <% end %>
-   </form>
- </div>
+<div id="stock-lookup">
+  <h3 style="text-align:center">Search for Stocks</h3>
+  <%= form_tag get_stocks_path, remote: true, method: :get, id: 'stock-lookup-form' do %>
+  <div class="form-group row no-padding text-center col-md-12">
+    <div class="col-md-10">
+      <%= text_field_tag :stock, params[:stock], placeholder: 'Stock Ticker Symbol', autofocus: true, class: 'form-control search-box input-lg' %>
+    </div>
+    <div class="col-md-2">
+      <%= button_tag(type: :submit, class: 'btn btn-lg btn-warning') do %>
+      <i class='fa fa-search'></i> Look up a stock
+      <% end %>
+    </div>
+  </div>
+  <% end %>
+  <% if @tracker %>
+    <h5>Price: <%= @tracker.price %></h5>
+    <h5>Symbol: <%= @tracker.symbol %></h5>
+    <h5>Name: <%= @tracker.name %></h5>
+  <% end %>
+</div>

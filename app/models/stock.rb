@@ -1,4 +1,6 @@
 class Stock < ApplicationRecord
+  scope :by_ticker, -> (ticker_symbol) { where(ticker: ticker_symbol) }
+
   def self.new_from_lookup(ticker_symbol)
     look_up = StockQuote::Stock.quote(ticker_symbol)
     return nil unless look_up.name
@@ -8,9 +10,9 @@ class Stock < ApplicationRecord
     new_stock
   end
 
-  def self.find_by_ticker(ticker_symbol)
-    where(ticker: ticker_symbol)
-  end
+  # def self.find_by_ticker(ticker_symbol)
+  #   where(ticker: ticker_symbol)
+  # end
 
   def price
     closing_price = StockQuote::Stock.quote(ticker).close
