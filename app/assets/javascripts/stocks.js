@@ -9,15 +9,26 @@ var stockSearch = function(){
       type: $(this).attr('method'),
       url: $(this).attr('action'),
       data: $(this).serialize(),
+      onLoading: showSpinner(),
       success: function(responseText) {
         $("#stock-lookup").replaceWith(responseText);
-      }// end success
+        hideSpinner();
+        stockSearch();
+      },// end success
+      error: function(responseText, status) {
+        console.log(status);
+        if (status === 'error') {
+          $('#results').replaceWith("  ")
+          $("#error-results").html("Stock was not found").show();
+          hideSpinner();
+          stockSearch();
+        }
+      } // end error
     }); //end ajax
-    stockSearch();
   }); // end sumbit
 }; // end stock search
 
-
 $(document).ready(function(){
+  $("#error-results").hide();
   stockSearch();
 });

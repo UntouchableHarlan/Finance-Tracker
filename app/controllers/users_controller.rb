@@ -6,7 +6,6 @@ class UsersController < ApplicationController
   end
 
   def my_portfolio
-
   end
 
   def create

@@ -10,6 +10,7 @@
     </div>
   </div>
   <% end %>
+  <%= render 'common/spinner'%>
     <% if @tracker %>
       <div id="results" class="well">
         <strong>Price: </strong><%= @tracker.last_price %>
@@ -17,4 +18,5 @@
         <strong>Name: </strong><%= @tracker.name %>
       </div>
     <% end %>
+    <div id="error-results"></div>
 </div>
