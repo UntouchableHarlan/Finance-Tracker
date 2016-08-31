@@ -1,0 +1,16 @@
+<h1> <%= @user.name%> </h1>
+<% if current_user == @user %>
+  <%= link_to "Edit Profile", edit_user_path(current_user), class: "btn btn-info", id: "edit-profile-button"%>
+<% end %>
+<div class="container-fluid">
+  <h3 style="margin: 0; padding-left: 13%; padding-bottom: 0.4%;">Added Stocks</h3>
+  <div id="added" class="row well">
+  <% @user.stocks.each do |stocks| %>
+      <div class="col-md-12">
+        <strong>Price: </strong><%= stocks.last_price %>
+        <strong>Symbol: </strong><%= stocks.ticker %>
+        <strong>Name: </strong><%= stocks.name %>
+      </div>
+  <% end %>
+  </div>
+</div>

@@ -5,6 +5,14 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def show
+    @user = User.find(params[:id])
+  end
+
   def my_portfolio
   end
 
