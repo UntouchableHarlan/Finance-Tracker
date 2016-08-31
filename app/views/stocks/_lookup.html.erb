@@ -16,8 +16,29 @@
         <strong>Price: </strong><%= @tracker.last_price %>
         <strong>Symbol: </strong><%= @tracker.ticker %>
         <strong>Name: </strong><%= @tracker.name %>
-        <%= link_to "Add Stock", create_stock_path(ticker: @tracker.ticker, name: @tracker.name, last_price: @tracker.last_price) %>
+        <% if current_user.can_add?(@tracker.ticker)%>
+          <%= link_to "Add Stock", create_stock_path(ticker: @tracker.ticker, name: @tracker.name, last_price: @tracker.last_price), class: "btn btn-succes" %>
+        <% else %>
+          Stock Already added!
+        <% end %>
       </div>
     <% end %>
     <div id="error-results"></div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div class="container-fluid">
+  <% current_user.stocks.each do |stocks| %>
+    <div id="already-added" class="row well">
+      <div class="col-md-12">
+        <strong>Price: </strong><%= stocks.last_price %>
+        <strong>Symbol: </strong><%= stocks.ticker %>
+        <strong>Name: </strong><%= stocks.name %>
+      </div>
+    </div>
+  <% end %>
 </div>
