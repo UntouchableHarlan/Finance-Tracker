@@ -45,4 +45,13 @@ class StocksController < ApplicationController
     end
   end
 
+  def destroy
+    @stock = Stock.find(params[:id])
+    @stock.destroy
+    respond_to do |format|
+      format.html { redirect_to my_portfolio_path, notice: 'Stock was successfully deleted.' }
+      format.json { head :no_content }
+    end
+  end
+
 end

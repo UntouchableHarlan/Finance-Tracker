@@ -28,7 +28,23 @@ var stockSearch = function(){
   }); // end sumbit
 }; // end stock search
 
+
+var delete_stock = function(){
+  $('#delete-stock').on('click', function(event){
+    event.preventDefault();
+    console.log('clicked');
+    $.ajax({
+      type: $(this).attr('data-method'),
+      url: $(this).attr('href'),
+      success: function(){
+        $('#already-added').load();
+      }// end success
+    })// end ajax
+  });//end on click
+};
+
 $(document).ready(function(){
   $("#error-results").hide();
   stockSearch();
+  delete_stock();
 });

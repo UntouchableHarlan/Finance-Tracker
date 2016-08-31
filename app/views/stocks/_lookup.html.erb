@@ -17,7 +17,7 @@
         <strong>Symbol: </strong><%= @tracker.ticker %>
         <strong>Name: </strong><%= @tracker.name %>
         <% if current_user.can_add?(@tracker.ticker)%>
-          <%= link_to "Add Stock", create_stock_path(ticker: @tracker.ticker, name: @tracker.name, last_price: @tracker.last_price), class: "btn btn-succes" %>
+          <%= link_to "Add Stock", create_stock_path(ticker: @tracker.ticker, name: @tracker.name, last_price: @tracker.last_price), class: "btn btn-success" %>
         <% else %>
           Stock Already added!
         <% end %>
@@ -25,19 +25,16 @@
     <% end %>
     <div id="error-results"></div>
 </div>
-<br>
-<br>
-<br>
-<br>
-<br>
 
-<div class="container-fluid">
+
+<div class="container-fluid" style="padding-top: 115px;">
   <% current_user.stocks.each do |stocks| %>
     <div id="already-added" class="row well">
       <div class="col-md-12">
         <strong>Price: </strong><%= stocks.last_price %>
         <strong>Symbol: </strong><%= stocks.ticker %>
         <strong>Name: </strong><%= stocks.name %>
+        <%= link_to "Remove Stock", stocks, method: :delete, class: "btn btn-danger", id: "delete-stock" %>
       </div>
     </div>
   <% end %>
