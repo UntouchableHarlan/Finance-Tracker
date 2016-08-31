@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   has_secure_password
   has_many :stocks
+  has_many :friendships
+  has_many :friends, through: :friendships
 
   def can_add?(ticker)
     under_stock_limit? && !stock_already_added?(ticker)

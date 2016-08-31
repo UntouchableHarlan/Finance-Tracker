@@ -16,6 +16,10 @@ class UsersController < ApplicationController
   def my_portfolio
   end
 
+  def connect
+
+  end
+
   def create
     @user = User.new(user_params)
       if @user.save
