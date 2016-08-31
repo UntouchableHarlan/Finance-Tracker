@@ -16,6 +16,7 @@
         <strong>Price: </strong><%= @tracker.last_price %>
         <strong>Symbol: </strong><%= @tracker.ticker %>
         <strong>Name: </strong><%= @tracker.name %>
+        <%= link_to "Add Stock", create_stock_path(ticker: @tracker.ticker, name: @tracker.name, last_price: @tracker.last_price) %>
       </div>
     <% end %>
     <div id="error-results"></div>

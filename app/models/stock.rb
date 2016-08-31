@@ -1,6 +1,6 @@
 class Stock < ApplicationRecord
   # scope :by_ticker, -> (ticker_symbol) { where(ticker: ticker_symbol) }
-
+  belongs_to :user
   def self.new_from_lookup(ticker_symbol)
     look_up = StockQuote::Stock.quote(ticker_symbol)
     return nil unless look_up.name

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/signup' => 'users#new'
   get '/my_portfolio' => 'users#my_portfolio'
   get '/get_stocks' => 'stocks#search'
+  get '/create_stock' => 'stocks#create'
 
   resources :sessions
   resources :users
