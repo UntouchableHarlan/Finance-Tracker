@@ -29,7 +29,7 @@ class User < ApplicationRecord
   end
 
   def execpt_current_user(user)
-    user.reject { |u|  u.id == self.id }
+    user.reject { |u| u.id == self.id }
   end
 
   def self.search(param)

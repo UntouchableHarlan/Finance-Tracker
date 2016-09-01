@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+// require turbolinks
 //= require_tree .
 var hideSpinner = function(){
   $('#spinner').hide();
@@ -39,6 +39,21 @@ var search_friends = function(){
   }); // end submit
 }
 
+var delete_friend = function(){
+  $('#delete-friend').on('click', function(event){
+    event.preventDefault();
+    console.log('clicked');
+    $.ajax({
+      type: $(this).attr('data-method'),
+      url: $(this).attr('href'),
+      success: function(){
+        $('#friend-table').load();
+      }// end success
+    })// end ajax
+  });//end on click
+};
+
 $(document).ready(function(){
   search_friends();
+  delete_friend();
 });
