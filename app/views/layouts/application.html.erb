@@ -23,7 +23,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Finance Tracker</a>
+          <%= link_to "Finance Tracker", root_path, class: "navbar-brand" %>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -40,7 +40,6 @@
             <% else %>
             <ul class="nav navbar-right">
               <li><%= link_to "Log In", login_path%></li>
-              <li><%= link_to "Sign Up", signup_path%></li>
             </ul>
             <% end %>
           <form class="navbar-form navbar-left">

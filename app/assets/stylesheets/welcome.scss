@@ -4,3 +4,10 @@
 h1 {
   text-align: center;
 }
+
+#stock_background {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('stock1.jpg');
+  width: 100%;
+  height: auto;
+  padding-bottom: 18%;
+}

@@ -1,1 +1,14 @@
-<h1>Welcome to finance Tracker<% if current_user%> <%= current_user.name %> <% end %></h1>
+<h1>Welcome to Finance Tracker<% if current_user%> <%= current_user.name %> <% end %></h1>
+<div class="container" id="stock_background">
+  <% if current_user%>
+  <h2 style="text-align:center; color:white;">Start to get a feel for the app!</h2>
+    <div class="col-md-12" style="margin-left: 42%;">
+      <%= link_to "Connect", connect_path, class: "btn btn-success" %> | <%= link_to "Stocks", get_stocks_path, class: "btn btn-warning"%>
+    </div>
+  <% else %>
+  <h2 style="text-align:center; color:white;">Sign up! Track your stocks and other friends!</h2>
+    <div class="col-md-12" style="margin-left: 42%;">
+      <%= link_to "Sign Up", signup_path, class: "btn btn-success" %> | <%= link_to "Log In", login_path, class: "btn btn-info"%>
+    </div>
+  <% end %>
+</div>
