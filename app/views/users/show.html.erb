@@ -3,6 +3,7 @@
   <%= link_to "Edit Profile", edit_user_path(current_user), class: "btn btn-info", id: "edit-profile-button"%>
 <% end %>
 <div class="container-fluid">
+<% if @user.stocks.count > 0%>
   <h3 style="margin: 0; padding-left: 13%; padding-bottom: 0.4%;">Added Stocks</h3>
   <div id="added" class="row well">
   <% @user.stocks.each do |stocks| %>
@@ -13,4 +14,9 @@
       </div>
   <% end %>
   </div>
+<% else %>
+  <p>
+    No stocks being tracked
+  </p>
+<% end %>
 </div>

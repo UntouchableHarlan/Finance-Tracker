@@ -1,1 +1,35 @@
 <h1>My Friends</h1>
+
+<%= render 'friends/lookup'%>
+<% if @friendships.count > 0%>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @friendships.each do |friend| %>
+      <tr>
+        <th scope="row">1</th>
+        <td><%= friend.name %></td>
+        <td><%= friend.email %></td>
+        <td><%= link_to "View Profile", user_path(friend), class: "btn btn-primary"%></td>
+        <td><%= link_to "Unfriend", friendship_path(friend), method: :delete, class: "btn btn-danger"%></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <div class="row">
+    <div class="col-lg-12">
+      <p class="lead" style="text-align:center">
+        No friends yet. Add some
+      </p>
+    </div>
+  </div>
+
+<% end %>

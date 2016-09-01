@@ -30,7 +30,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <% if current_user %>
             <ul class="nav navbar-nav">
-              <li><a href="#">Connect</a></li>
+              <li><%= link_to "Connect", connect_path %></li>
               <li><%= link_to "Profile", current_user %></li>
               <li><%= link_to "Portfolio", my_portfolio_path%></li>
             </ul>

@@ -24,4 +24,32 @@ class User < ApplicationRecord
     end
   end
 
+  def not_friends_with(friend_id)
+    friendships.where(friend_id: friend_id).count < 1
+  end
+
+  def execpt_current_user(user)
+    user.reject { |u|  u.id == self.id }
+  end
+
+  def self.search(param)
+    return User.none if param.blank?
+
+    param.strip!
+    param.downcase!
+    (name_matches(param) + email_matches(param))
+  end
+
+  def self.name_matches(param)
+    matches('name', param)
+  end
+
+  def self.email_matches(param)
+    matches('email', param)
+  end
+
+  def self.matches(field_name, param)
+    where("lower(#{field_name}) like ?", "%#{param}%")
+  end
+
 end

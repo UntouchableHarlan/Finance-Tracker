@@ -21,3 +21,24 @@ var hideSpinner = function(){
 var showSpinner = function(){
   $("#spinner").show();
 }
+
+var search_friends = function(){
+  $('#friend-lookup-form').submit(function(event){
+    event.preventDefault();
+    $.ajax({
+      type: $(this).attr('method'),
+      url: $(this).attr('action'),
+      data: $(this).serialize(),
+      onLoading: showSpinner(),
+      success: function(responseText){
+        $("#friend-lookup").replaceWith(responseText);
+        hideSpinner();
+        search_friends();
+      }// end success
+    })// end ajax
+  }); // end submit
+}
+
+$(document).ready(function(){
+  search_friends();
+});
